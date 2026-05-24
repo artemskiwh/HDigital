@@ -525,7 +525,10 @@ img {
 }
 .hero-title-gray:hover { color: #8a8a8a; }
 .hero-title-white {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     color: #fff;
     margin-top: 0.15rem;
     position: relative;
