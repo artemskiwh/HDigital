@@ -32,21 +32,26 @@
     ctx.fillRect(0, 0, 64, 64);
     const starTex = new THREE.CanvasTexture(starCanvas);
 
+    // Разброс подбираем под форму экрана: на мобильном кадр узкий и высокий,
+    // поэтому область делаем компактнее, иначе звёзды улетают за пределы видимости.
+    const spreadX = isMobile ? 20 : 60;
+    const spreadY = isMobile ? 26 : 42;
+
     // Ближний слой звёзд
-    const starCount = isMobile ? 450 : 950;
+    const starCount = isMobile ? 550 : 950;
     const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 60;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 42;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 30 - 4;
+        positions[i * 3] = (Math.random() - 0.5) * spreadX;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * spreadY;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 26 - 2;
     }
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const mat = new THREE.PointsMaterial({
-        size: isMobile ? 0.18 : 0.22,
+        size: isMobile ? 0.3 : 0.22,
         map: starTex,
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.9,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
     });
@@ -54,20 +59,20 @@
     scene.add(stars);
 
     // Дальний слой мелких звёзд (глубина)
-    const farCount = isMobile ? 220 : 520;
+    const farCount = isMobile ? 320 : 520;
     const farGeo = new THREE.BufferGeometry();
     const farPos = new Float32Array(farCount * 3);
     for (let i = 0; i < farCount; i++) {
-        farPos[i * 3] = (Math.random() - 0.5) * 80;
-        farPos[i * 3 + 1] = (Math.random() - 0.5) * 56;
-        farPos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 15;
+        farPos[i * 3] = (Math.random() - 0.5) * (isMobile ? 30 : 80);
+        farPos[i * 3 + 1] = (Math.random() - 0.5) * (isMobile ? 38 : 56);
+        farPos[i * 3 + 2] = (Math.random() - 0.5) * 20 - 14;
     }
     farGeo.setAttribute('position', new THREE.BufferAttribute(farPos, 3));
     const farMat = new THREE.PointsMaterial({
-        size: 0.09,
+        size: isMobile ? 0.15 : 0.09,
         map: starTex,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.55,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
     });
@@ -94,8 +99,8 @@
         farStars.rotation.y = t * 0.005 + mouseX * 0.08;
 
         // Лёгкое мерцание
-        mat.opacity = 0.7 + Math.sin(t * 1.5) * 0.15;
-        farMat.opacity = 0.4 + Math.sin(t * 1.1 + 1) * 0.1;
+        mat.opacity = 0.8 + Math.sin(t * 1.5) * 0.15;
+        farMat.opacity = 0.5 + Math.sin(t * 1.1 + 1) * 0.1;
 
         renderer.render(scene, camera);
     }
