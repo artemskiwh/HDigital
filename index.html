@@ -4,2007 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
-    <title>HDigital — Продающие сайты, которые окупаются | Артем Хомов</title>
+    <title>HDigital - Продающие сайты, которые окупаются | Артем Хомов</title>
     <meta name="description"
-        content="Создаю продающие сайты под рекламу и трафик для бизнесов в сфере услуг. Полный запуск под ключ. Дизайн главного блока — Бесплатно. 60 дней поддержки.">
+        content="Создаю продающие сайты под рекламу и трафик для бизнесов в сфере услуг. Полный запуск под ключ. Дизайн главного блока - Бесплатно. 60 дней поддержки.">
     <link rel="icon" type="image/jpeg" href="https://i.imgur.com/ctTN3R5.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-    </script>
-    <style>
-        :root {
-            --bg: #000000;
-            --bg2: #0a0a0a;
-            --surface: rgba(18, 18, 18, 0.7);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.25);
-            --text: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #6b6b6b;
-            --accent: #ffffff;
-            --radius: 1.25rem;
-            --radius-sm: 0.75rem;
-            --transition: 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-            --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        html {
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #333 var(--bg);
-        }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background-image: radial-gradient(ellipse at 50% 0%, rgba(40, 40, 40, 0.35) 0%, transparent 70%),
-                radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-            background-attachment: fixed;
-            -webkit-tap-highlight-color: transparent;
-        }
-        a, button, input, select, textarea {
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-        }
-        a:focus, button:focus, input:focus, select:focus, textarea:focus {
-            outline: none;
-        }
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        a,
-        button {
-            transition: var(--transition-fast);
-            text-decoration: none;
-            cursor: pointer;
-            font-family: inherit;
-            color: inherit;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ============ KEYFRAMES ============ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.6);
-            }
-        }
-        @keyframes floatSlow {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-        @keyframes floatSlowRotate {
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-18px) rotate(5deg);
-            }
-            66% {
-                transform: translateY(-6px) rotate(-3deg);
-            }
-        }
-        @keyframes shimmer {
-            0% {
-                background-position: -200% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
-        }
-        @keyframes borderPulse {
-            0%,
-            100% {
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-            50% {
-                border-color: rgba(255, 255, 255, 0.35);
-            }
-        }
-        @keyframes widthGrow {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 100%;
-            }
-        }
-        @keyframes dotBounce {
-            0%,
-            100% {
-                transform: translateY(0) translateX(-50%);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translateY(16px) translateX(-50%);
-                opacity: 1;
-            }
-        }
-        @keyframes rotateSlow {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        @keyframes textGlitch {
-            0%,
-            100% {
-                text-shadow: none;
-            }
-            92% {
-                text-shadow: none;
-            }
-            93% {
-                text-shadow: -2px 0 #fff, 2px 0 rgba(255, 255, 255, 0.3);
-            }
-            94% {
-                text-shadow: 2px 0 #fff, -2px 0 rgba(255, 255, 255, 0.3);
-            }
-            95% {
-                text-shadow: none;
-            }
-        }
-        @keyframes subtlePulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.01);
-            }
-        }
-
-        /* ============ HEADER ============ */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        }
-        .header.scrolled {
-            background: rgba(0, 0, 0, 0.92);
-            border-bottom-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
-        }
-        .header-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-        .logo-img {
-            height: 36px;
-            width: auto;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            mix-blend-mode: screen;
-            filter: brightness(1.4) contrast(1.15);
-        }
-        .logo-img:hover {
-            transform: scale(1.08);
-            filter: brightness(1.7) contrast(1.25);
-        }
-        .nav {
-            display: none;
-            align-items: center;
-            gap: 0.15rem;
-        }
-        @media (min-width: 1024px) {
-            .nav {
-                display: flex;
-            }
-        }
-        .nav-link {
-            padding: 0.45rem 0.9rem;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            position: relative;
-            background: none;
-            border: none;
-            letter-spacing: 0.03em;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: color 0.3s, background 0.3s;
-            border-radius: 9999px;
-        }
-        .nav-link:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0.9rem;
-            right: 0.9rem;
-            height: 1.5px;
-            background: #fff;
-            transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-            transform-origin: left;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-        }
-        .header-tg {
-            display: none;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            padding: 0.45rem 1rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .header-tg:hover {
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.06);
-        }
-        @media (min-width: 768px) {
-            .header-tg {
-                display: flex;
-            }
-        }
-        .menu-btn {
-            display: block;
-            padding: 0.5rem;
-            color: #fff;
-            background: none;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: background 0.3s;
-        }
-        .menu-btn:hover {
-            background: rgba(255, 255, 255, 0.06);
-        }
-        @media (min-width: 1024px) {
-            .menu-btn {
-                display: none;
-            }
-        }
-
-        /* Mobile menu */
-        .mobile-menu {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: saturate(180%) blur(30px);
-            -webkit-backdrop-filter: saturate(180%) blur(30px);
-            z-index: 10001;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0.55s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            will-change: opacity, visibility;
-        }
-        .mobile-menu.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 50%;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-        .mobile-menu-close:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
-        }
-
-        .mobile-menu-nav {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .mobile-nav-link {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #fff;
-            text-align: center;
-            letter-spacing: -0.02em;
-            cursor: pointer;
-            padding: 0.3rem 0;
-            width: 100%;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.3s;
-            will-change: transform, opacity;
-            position: relative;
-        }
-        .mobile-nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            height: 1px;
-            width: 60%;
-            background: rgba(255, 255, 255, 0.4);
-            transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .mobile-nav-link:hover {
-            color: #ccc;
-        }
-        .mobile-nav-link:hover::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-        .mobile-menu.open .mobile-nav-link {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .mobile-menu.open .mobile-nav-link:nth-child(1) { transition-delay: 0.08s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(2) { transition-delay: 0.16s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(3) { transition-delay: 0.24s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(4) { transition-delay: 0.32s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(5) { transition-delay: 0.40s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(6) { transition-delay: 0.48s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(7) { transition-delay: 0.56s; }
-        .mobile-menu.open .mobile-nav-link:nth-child(8) { transition-delay: 0.64s; }
-
-        .mobile-menu-footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.5s ease 0.6s;
-        }
-        .mobile-menu.open .mobile-menu-footer {
-            opacity: 1;
-        }
-
-        .mobile-menu-socials {
-            display: flex;
-            gap: 1.4rem;
-            justify-content: center;
-        }
-        .mobile-menu-social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            color: #aaa;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .mobile-menu-social-link:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-            transform: translateY(-3px);
-        }
-        .mobile-menu-email {
-            font-size: 0.85rem;
-            color: #888;
-            text-decoration: none;
-            transition: color 0.3s;
-            margin-top: 0.3rem;
-        }
-        .mobile-menu-email:hover {
-            color: #fff;
-        }
-
-        /* ============ HERO (УКОРОЧЕННЫЙ + ЦЕНТРИРОВАННЫЙ) ============ */
-        .hero {
-            min-height: 88vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 1.25rem 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        @media (min-width: 768px) {
-            .hero {
-                min-height: 90vh;
-                padding: 7rem 1.5rem 4rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .hero {
-                min-height: 92vh;
-            }
-        }
-        #threejs-container {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .hero-grid-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-            background-size: 80px 80px;
-            z-index: 2;
-            pointer-events: none;
-            animation: fadeIn 1.5s ease-out;
-        }
-        .hero-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-            pointer-events: auto;
-            text-align: center;
-        }
-        .hero-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            margin-bottom: 1.5rem;
-            animation: fadeInDown 0.9s ease-out;
-        }
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
-            animation: pulseDot 2.5s ease-in-out infinite;
-        }
-        .hero-badge-text {
-            font-size: 0.78rem;
-            color: #c0c0c0;
-            letter-spacing: 0.07em;
-            font-weight: 500;
-        }
-        @media (min-width: 640px) {
-            .hero-badge-text {
-                font-size: 0.85rem;
-            }
-        }
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 0.98;
-            margin-bottom: 1rem;
-            letter-spacing: -0.04em;
-            animation: fadeInUp 1s ease-out;
-            text-align: center;
-        }
-        @media (min-width: 640px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 3.6rem;
-                margin-bottom: 1.25rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .hero-title {
-                font-size: 4.4rem;
-            }
-        }
-        @media (min-width: 1400px) {
-            .hero-title {
-                font-size: 5rem;
-            }
-        }
-        .hero-title-gray {
-            display: block;
-            color: #5a5a5a;
-            transition: color 0.6s;
-        }
-        .hero-title-gray:hover {
-            color: #8a8a8a;
-        }
-        .hero-title-white {
-            display: inline-block;
-            color: #fff;
-            margin-top: 0.15rem;
-            position: relative;
-            animation: textGlitch 8s infinite;
-        }
-        @media (min-width: 768px) {
-            .hero-title-white {
-                margin-top: 0.3rem;
-            }
-        }
-        .hero-title-line {
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            height: 3px;
-            background: #fff;
-            border-radius: 9999px;
-            animation: widthGrow 1.4s ease-out 0.6s forwards;
-            width: 0;
-        }
-        @media (min-width: 768px) {
-            .hero-title-line {
-                bottom: -8px;
-                height: 4px;
-            }
-        }
-        .hero-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            max-width: 38rem;
-            margin: 0 auto 2rem;
-            line-height: 1.7;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            text-align: center;
-        }
-        @media (min-width: 640px) {
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .hero-subtitle {
-                font-size: 1.1rem;
-                max-width: 42rem;
-                margin-bottom: 2.5rem;
-            }
-        }
-        .hero-subtitle-free {
-            color: #fff;
-            font-weight: 600;
-            position: relative;
-            cursor: default;
-            transition: all 0.3s;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-        }
-        .hero-subtitle-free:hover {
-            border-bottom-color: #fff;
-        }
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-                gap: 1rem;
-            }
-        }
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.85rem 1.6rem;
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-            border-radius: 9999px;
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.5s;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: -0.01em;
-            animation: subtlePulse 2s infinite;
-        }
-        @media (min-width: 640px) {
-            .btn-primary {
-                padding: 0.95rem 2rem;
-                font-size: 0.95rem;
-            }
-        }
-        .btn-primary:hover {
-            background: #e0e0e0;
-            transform: translateY(-3px);
-            box-shadow: 0 22px 55px -15px rgba(255, 255, 255, 0.35);
-            animation: none;
-        }
-        .btn-primary:active {
-            transform: scale(0.97);
-        }
-        .btn-primary svg {
-            transition: all 0.5s;
-            flex-shrink: 0;
-        }
-        .btn-primary:hover svg {
-            transform: rotate(12deg) scale(1.1);
-        }
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.85rem 1.6rem;
-            background: transparent;
-            color: #fff;
-            font-weight: 500;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.5s;
-            gap: 0.4rem;
-        }
-        @media (min-width: 640px) {
-            .btn-secondary {
-                padding: 0.95rem 2rem;
-                font-size: 0.95rem;
-            }
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 15px 40px -15px rgba(255, 255, 255, 0.15);
-        }
-        .btn-secondary svg {
-            transition: transform 0.4s;
-        }
-        .btn-secondary:hover svg {
-            transform: translateY(3px);
-        }
-        .scroll-indicator {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-        @media (min-width: 768px) {
-            .scroll-indicator {
-                display: flex;
-            }
-        }
-        .scroll-text {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        .scroll-mouse {
-            width: 20px;
-            height: 32px;
-            border: 2px solid #3a3a3a;
-            border-radius: 9999px;
-            display: flex;
-            justify-content: center;
-            padding-top: 6px;
-        }
-        .scroll-dot {
-            width: 4px;
-            height: 8px;
-            background: #fff;
-            border-radius: 9999px;
-            animation: dotBounce 1.8s ease-in-out infinite;
-        }
-
-        /* ============ SECTIONS COMMON ============ */
-        .section {
-            padding: 4rem 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            position: relative;
-        }
-        @media (min-width: 768px) {
-            .section {
-                padding: 7rem 1.5rem;
-            }
-        }
-        .section-alt {
-            background: #040404;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        @media (min-width: 768px) {
-            .section-header {
-                margin-bottom: 4.5rem;
-            }
-        }
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #888;
-            font-size: 0.75rem;
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-        .section-label-line {
-            width: 1.2rem;
-            height: 1px;
-            background: #555;
-        }
-        .section-title {
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            color: #fff;
-        }
-        @media (min-width: 640px) {
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.6rem;
-            }
-        }
-        .section-subtitle {
-            color: #888;
-            margin-top: 0.7rem;
-            max-width: 40rem;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        @media (min-width: 768px) {
-            .section-subtitle {
-                font-size: 1rem;
-            }
-        }
-
-        /* Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
-
-        /* ============ ABOUT (БЕЗ ФОТО, ЦЕНТРИРОВАННЫЙ) ============ */
-        .about-wrap {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .about-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #888;
-            font-size: 0.75rem;
-            margin-bottom: 0.9rem;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-            text-transform: uppercase;
-            justify-content: center;
-        }
-        .about-label::before, .about-label::after {
-            content: '';
-            width: 1.2rem;
-            height: 1px;
-            background: #555;
-        }
-        .about-title {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 1.1rem;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            color: #fff;
-        }
-        @media (min-width: 640px) {
-            .about-title {
-                font-size: 2rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .about-title {
-                font-size: 2.6rem;
-            }
-        }
-        .about-text {
-            color: #999;
-            font-size: 0.95rem;
-            margin-bottom: 1.8rem;
-            line-height: 1.7;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        @media (min-width: 768px) {
-            .about-text {
-                font-size: 1.05rem;
-            }
-        }
-        .about-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-            margin-bottom: 1.5rem;
-            justify-content: center;
-            align-items: center;
-        }
-        @media (min-width: 640px) {
-            .about-buttons {
-                flex-direction: row;
-            }
-        }
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.3rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 9999px;
-            color: #ccc;
-            font-weight: 500;
-            font-size: 0.82rem;
-            transition: all 0.5s;
-        }
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.35);
-            color: #fff;
-        }
-        .btn-outline svg {
-            transition: all 0.3s;
-            flex-shrink: 0;
-            color: #aaa;
-        }
-        .btn-outline:hover svg {
-            transform: rotate(10deg) translateY(-2px);
-            color: #fff;
-        }
-        .about-note {
-            color: #777;
-            font-size: 0.85rem;
-            max-width: 36rem;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* ============ CASES (НОВЫЙ СТИЛЬ В ДУХЕ BELOZEROVWEB) ============ */
-        .cases-header {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        @media (min-width: 768px) {
-            .cases-header {
-                flex-direction: row;
-                align-items: flex-end;
-                justify-content: space-between;
-                margin-bottom: 3.5rem;
-            }
-        }
-        .cases-link {
-            display: none;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .cases-link:hover {
-            color: #fff;
-        }
-        .cases-link svg {
-            transition: transform 0.3s;
-        }
-        .cases-link:hover svg {
-            transform: translate(4px, -2px);
-        }
-        @media (min-width: 768px) {
-            .cases-link {
-                display: flex;
-            }
-        }
-
-        /* Большие проектные карточки в духе belozerovweb */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .projects-list {
-                gap: 2rem;
-            }
-        }
-
-        .project-card {
-            display: block;
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.5s, transform 0.5s, box-shadow 0.5s;
-            color: #fff;
-            text-decoration: none;
-        }
-        .project-card:hover {
-            border-color: rgba(255, 255, 255, 0.18);
-            transform: translateY(-6px);
-            box-shadow: 0 35px 70px -30px rgba(0, 0, 0, 0.85);
-        }
-        .project-inner {
-            display: grid;
-            grid-template-columns: 1fr;
-            align-items: stretch;
-        }
-        @media (min-width: 900px) {
-            .project-inner {
-                grid-template-columns: 1.15fr 1fr;
-            }
-            .project-card:nth-child(even) .project-inner {
-                grid-template-columns: 1fr 1.15fr;
-            }
-            .project-card:nth-child(even) .project-image-wrap {
-                order: 2;
-            }
-            .project-card:nth-child(even) .project-content {
-                order: 1;
-            }
-        }
-        .project-image-wrap {
-            position: relative;
-            overflow: hidden;
-            background: #111;
-            aspect-ratio: 16 / 10;
-        }
-        @media (min-width: 900px) {
-            .project-image-wrap {
-                aspect-ratio: auto;
-                min-height: 360px;
-            }
-        }
-        .project-image {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .project-card:hover .project-image {
-            transform: scale(1.06);
-        }
-        .project-image-shade {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%);
-            opacity: 1;
-            transition: opacity 0.5s;
-        }
-        .project-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.35rem 0.85rem;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            letter-spacing: 0.04em;
-            z-index: 3;
-        }
-        .project-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
-        }
-        .project-content {
-            padding: 1.5rem 1.5rem 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.9rem;
-        }
-        @media (min-width: 768px) {
-            .project-content {
-                padding: 2.2rem 2.4rem;
-                gap: 1.05rem;
-            }
-        }
-        .project-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.7rem;
-            color: #777;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-        .project-meta-num {
-            color: #fff;
-            font-weight: 700;
-        }
-        .project-meta-sep {
-            width: 18px;
-            height: 1px;
-            background: #444;
-        }
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            color: #fff;
-            transition: color 0.4s;
-        }
-        @media (min-width: 768px) {
-            .project-title {
-                font-size: 1.8rem;
-            }
-        }
-        .project-card:hover .project-title {
-            color: #f0f0f0;
-        }
-        .project-desc {
-            color: #999;
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-        @media (min-width: 768px) {
-            .project-desc {
-                font-size: 0.95rem;
-            }
-        }
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 0.2rem;
-        }
-        .project-tag {
-            padding: 0.28rem 0.75rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            color: #aaa;
-            font-size: 0.72rem;
-            border-radius: 9999px;
-            transition: all 0.35s;
-            font-weight: 500;
-        }
-        .project-card:hover .project-tag {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.14);
-            color: #ddd;
-        }
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.4rem;
-            color: #ddd;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.3s, gap 0.4s;
-            align-self: flex-start;
-        }
-        .project-card:hover .project-link {
-            color: #fff;
-            gap: 0.7rem;
-        }
-        .project-link-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s;
-        }
-        .project-card:hover .project-link-icon {
-            background: #fff;
-            border-color: #fff;
-            color: #000;
-            transform: rotate(-45deg);
-        }
-
-        /* ============ PROCESS ============ */
-        .process-grid {
-            display: grid;
-            gap: 1.25rem;
-        }
-        @media (min-width: 768px) {
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .process-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        .process-card {
-            background: #0d0d0d;
-            border-radius: var(--radius);
-            padding: 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            height: 100%;
-            transition: all 0.6s;
-            position: relative;
-            overflow: hidden;
-        }
-        .process-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
-            background: #111;
-        }
-        .process-card-inner {
-            position: relative;
-            z-index: 2;
-        }
-        .process-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.7rem;
-        }
-        .process-stage {
-            font-size: 0.65rem;
-            color: #666;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-        .process-badge {
-            padding: 0.18rem 0.6rem;
-            font-size: 0.65rem;
-            font-weight: 500;
-            border-radius: 9999px;
-            color: #aaa;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.5s;
-        }
-        .process-badge-highlight {
-            background: #fff;
-            color: #000;
-        }
-        .process-card:hover .process-badge-highlight {
-            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
-        }
-        .process-card:hover .process-badge {
-            transform: scale(1.05);
-        }
-        .process-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            transition: all 0.5s;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
-        }
-        .process-card:hover .process-title {
-            color: #ddd;
-        }
-        .process-desc {
-            color: #888;
-            font-size: 0.78rem;
-            margin-bottom: 0.7rem;
-            line-height: 1.5;
-        }
-        .process-features {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-        .process-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.74rem;
-            color: #999;
-            transition: color 0.3s;
-        }
-        .process-card:hover .process-feature {
-            color: #bbb;
-        }
-        .process-feature-dot {
-            width: 4px;
-            height: 4px;
-            background: #fff;
-            border-radius: 50%;
-            transition: transform 0.3s;
-            flex-shrink: 0;
-        }
-        .process-card:hover .process-feature-dot {
-            transform: scale(1.5);
-        }
-        .process-box {
-            margin-top: 0.7rem;
-            padding: 0.7rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-sm);
-            transition: all 0.5s;
-        }
-        .process-card:hover .process-box {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.14);
-        }
-        .process-box-label {
-            font-size: 0.6rem;
-            color: #777;
-            font-weight: 600;
-            margin-bottom: 0.15rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .process-box-title {
-            font-size: 0.78rem;
-            color: #bbb;
-        }
-        .process-box-desc {
-            font-size: 0.68rem;
-            color: #777;
-            margin-top: 0.3rem;
-            line-height: 1.4;
-        }
-        .process-list {
-            margin-bottom: 0.6rem;
-        }
-        .process-list-title {
-            font-size: 0.63rem;
-            color: #666;
-            margin-bottom: 0.3rem;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        .process-list-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.18rem;
-        }
-        .process-list-item {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.68rem;
-            color: #888;
-        }
-        .process-list-dot {
-            width: 3px;
-            height: 3px;
-            background: #fff;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        /* ============ APPROACH (ВЫРОВНЕННАЯ НУМЕРАЦИЯ) ============ */
-        .approach-grid {
-            display: grid;
-            gap: 1.25rem;
-            grid-template-columns: 1fr;
-        }
-        @media (min-width: 768px) {
-            .approach-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .approach-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        .approach-card {
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #0a0a0a;
-            transition: all 0.6s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        @media (min-width: 640px) {
-            .approach-card {
-                padding: 1.8rem;
-            }
-        }
-        .approach-card:hover {
-            border-color: rgba(255, 255, 255, 0.18);
-            background: #0f0f0f;
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px -18px rgba(0, 0, 0, 0.7);
-        }
-        .approach-inner {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-        @media (min-width: 640px) {
-            .approach-inner {
-                gap: 1.2rem;
-            }
-        }
-        .approach-num {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #2a2a2a;
-            transition: all 0.5s;
-            flex-shrink: 0;
-            line-height: 1;
-            width: 3rem;
-            text-align: left;
-            display: inline-block;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: -0.04em;
-        }
-        @media (min-width: 640px) {
-            .approach-num {
-                font-size: 3rem;
-                width: 3.6rem;
-            }
-        }
-        .approach-card:hover .approach-num {
-            color: #555;
-            transform: scale(1.05);
-        }
-        .approach-text {
-            flex: 1;
-            min-width: 0;
-        }
-        .approach-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            transition: all 0.5s;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
-        }
-        @media (min-width: 640px) {
-            .approach-title {
-                font-size: 1.15rem;
-            }
-        }
-        .approach-card:hover .approach-title {
-            color: #ddd;
-        }
-        .approach-desc {
-            color: #888;
-            line-height: 1.6;
-            font-size: 0.85rem;
-            transition: color 0.3s;
-        }
-        .approach-card:hover .approach-desc {
-            color: #aaa;
-        }
-
-        /* ============ SERVICES ============ */
-        .services-grid {
-            display: grid;
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        .service-card {
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            background: #0d0d0d;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.6s;
-        }
-        @media (min-width: 640px) {
-            .service-card {
-                padding: 2rem;
-            }
-        }
-        .service-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-            background: #111;
-        }
-        .service-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            transition: all 0.5s;
-            letter-spacing: -0.01em;
-        }
-        .service-card:hover .service-title {
-            color: #ddd;
-        }
-        .service-desc {
-            color: #888;
-            font-size: 0.82rem;
-            margin-bottom: 1.2rem;
-            flex-grow: 1;
-            line-height: 1.55;
-            transition: color 0.3s;
-        }
-        .service-card:hover .service-desc {
-            color: #aaa;
-        }
-        .service-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            transition: transform 0.4s;
-            transform-origin: left;
-        }
-        .service-card:hover .service-price {
-            transform: scale(1.04);
-        }
-        .service-time {
-            font-size: 0.72rem;
-            color: #666;
-            margin-bottom: 1.2rem;
-        }
-        .service-btn {
-            display: block;
-            width: 100%;
-            padding: 0.85rem;
-            text-align: center;
-            font-weight: 500;
-            font-size: 0.82rem;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.03);
-            color: #bbb;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s;
-        }
-        .service-btn:hover {
-            background: #fff;
-            border-color: #fff;
-            color: #000;
-            box-shadow: 0 12px 35px -12px rgba(255, 255, 255, 0.2);
-        }
-        .consultation-card {
-            background: #0f0f0f;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            transition: all 0.6s;
-            animation: borderPulse 5s ease-in-out infinite;
-        }
-        @media (min-width: 640px) {
-            .consultation-card {
-                padding: 2rem;
-            }
-        }
-        .consultation-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 25px 60px -20px rgba(255, 255, 255, 0.06);
-            animation: none;
-        }
-        .consultation-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        @media (min-width: 768px) {
-            .consultation-inner {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-        .consultation-badge {
-            display: inline-block;
-            padding: 0.2rem 0.7rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: #aaa;
-            font-size: 0.68rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-            transition: all 0.3s;
-        }
-        .consultation-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            transition: all 0.5s;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
-        }
-        .consultation-card:hover .consultation-title {
-            color: #ddd;
-        }
-        .consultation-desc {
-            color: #888;
-            font-size: 0.82rem;
-            transition: color 0.3s;
-        }
-        .consultation-card:hover .consultation-desc {
-            color: #aaa;
-        }
-        .consultation-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.7rem;
-        }
-        @media (min-width: 768px) {
-            .consultation-right {
-                align-items: flex-end;
-            }
-        }
-        .consultation-price {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #fff;
-            transition: transform 0.5s;
-        }
-        .consultation-card:hover .consultation-price {
-            transform: scale(1.08);
-        }
-        .consultation-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.4rem;
-            background: #fff;
-            color: #000;
-            font-weight: 500;
-            font-size: 0.82rem;
-            border-radius: 9999px;
-            transition: all 0.5s;
-        }
-        .consultation-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px -12px rgba(255, 255, 255, 0.2);
-        }
-        .consultation-btn svg {
-            transition: transform 0.4s;
-            flex-shrink: 0;
-        }
-        .consultation-btn:hover svg {
-            transform: translate(4px, -2px);
-        }
-
-        /* ============ FAQ (ИСПРАВЛЕННОЕ ВЫРАВНИВАНИЕ) ============ */
-        .faq-container {
-            max-width: 46rem;
-            margin: 0 auto;
-        }
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .faq-item {
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            transition: border-color 0.4s, background 0.4s;
-            background: #0a0a0a;
-        }
-        .faq-item:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-        .faq-item.open {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: #0e0e0e;
-        }
-        .faq-question {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1.1rem 1.4rem;
-            text-align: left;
-            background: transparent;
-            border: none;
-            color: #ddd;
-            font-weight: 500;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            letter-spacing: -0.01em;
-            line-height: 1.4;
-        }
-        .faq-question > span:first-child {
-            flex: 1;
-            transition: color 0.3s;
-        }
-        .faq-item:hover .faq-question > span:first-child {
-            color: #fff;
-        }
-        .faq-icon {
-            color: #666;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
-            flex-shrink: 0;
-        }
-        .faq-item.open .faq-icon {
-            transform: rotate(180deg);
-            color: #fff;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            background: transparent;
-        }
-        .faq-answer-inner {
-            padding: 0 1.4rem 1.2rem;
-            color: #999;
-            line-height: 1.65;
-            font-size: 0.88rem;
-            text-align: left;
-        }
-
-        /* ============ CONTACT ============ */
-        .contact-section {
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-inner {
-            max-width: 52rem;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-        .contact-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 9999px;
-            color: #aaa;
-            font-size: 0.78rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-            animation: borderPulse 4s ease-in-out infinite;
-        }
-        .contact-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
-            animation: pulseDot 2.5s ease-in-out infinite;
-        }
-        .contact-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-        @media (min-width: 640px) {
-            .contact-title {
-                font-size: 2.2rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .contact-title {
-                font-size: 2.8rem;
-            }
-        }
-        .contact-desc {
-            color: #999;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            max-width: 38rem;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        @media (min-width: 768px) {
-            .contact-desc {
-                font-size: 1.05rem;
-            }
-        }
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 1.1rem 2.5rem;
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 9999px;
-            transition: all 0.5s;
-            border: none;
-            cursor: pointer;
-            letter-spacing: -0.01em;
-        }
-        .contact-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-            box-shadow: 0 25px 70px -20px rgba(255, 255, 255, 0.2);
-        }
-        .contact-btn svg {
-            transition: all 0.5s;
-            flex-shrink: 0;
-        }
-        .contact-btn:hover svg {
-            transform: rotate(12deg) translateY(-2px);
-        }
-
-        /* ============ FOOTER ============ */
-        .footer {
-            padding: 1.5rem 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.7rem;
-            font-size: 0.78rem;
-            color: #666;
-        }
-        @media (min-width: 768px) {
-            .footer-inner {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-        .footer-copy {
-            transition: color 0.3s;
-        }
-        .footer-copy:hover {
-            color: #aaa;
-        }
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .footer-link {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: #666;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-        .footer-link:hover {
-            color: #ddd;
-        }
-
-        /* ============ MOUSE GLOW ============ */
-        .mouse-glow {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
-            opacity: 0;
-        }
-        @media (max-width: 768px) {
-            .mouse-glow {
-                display: none;
-            }
-        }
-
-        /* ============ DECORATIVE FLOATING ELEMENTS ============ */
-        .floating-decor {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.12;
-        }
-        .floating-decor-1 {
-            top: 12%;
-            left: 6%;
-            width: 110px;
-            height: 110px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: floatSlowRotate 7s ease-in-out infinite;
-        }
-        .floating-decor-2 {
-            bottom: 18%;
-            right: 4%;
-            width: 75px;
-            height: 75px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: floatSlow 9s ease-in-out infinite;
-        }
-        @media (max-width: 768px) {
-            .floating-decor {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Mouse glow -->
@@ -2042,14 +49,18 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-        </button>
+    <!-- Боковая шторка-меню -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMenu()"></div>
+    <aside class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-head">
+            <span class="mobile-menu-logo">HDigital</span>
+            <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
         <nav class="mobile-menu-nav">
             <button class="mobile-nav-link" onclick="scrollToSection('hero');toggleMenu()">Главная</button>
             <button class="mobile-nav-link" onclick="scrollToSection('about');toggleMenu()">Знакомство</button>
@@ -2080,7 +91,7 @@
             </div>
             <a href="mailto:info@hdigital.ru" class="mobile-menu-email">info@hdigital.ru</a>
         </div>
-    </div>
+    </aside>
 
     <!-- Hero -->
     <section class="hero" id="hero">
@@ -2100,7 +111,7 @@
                 </h1>
                 <p class="hero-subtitle">
                     Полный запуск под рекламу и трафик для бизнесов в сфере услуг, которые приносят результат.
-                    Дизайн главного блока — <span class="hero-subtitle-free">Бесплатно</span>.
+                    Дизайн главного блока - <span class="hero-subtitle-free">Бесплатно</span>.
                 </p>
                 <div class="hero-buttons">
                     <a href="https://t.me/Skiwh" target="_blank" rel="noopener" class="btn-primary">
@@ -2130,15 +141,22 @@
         </div>
     </section>
 
-    <!-- About (без фото, центрированный) -->
+    <!-- About -->
     <section class="section section-alt" id="about">
         <div class="container">
             <div class="about-wrap">
-                <div class="about-label reveal">Давайте знакомиться — Артем (Основатель)</div>
+                <div class="about-label reveal">Давайте знакомиться - Артем (Основатель)</div>
                 <h2 class="about-title reveal reveal-delay-1">Создаю сайты и интернет-магазины под рекламу и трафик</h2>
                 <p class="about-text reveal reveal-delay-2">Эксперт в своей нише. Беру на себя полную ответственность
-                    за ведение проекта — не нужно нанимать никаких дополнительных подрядчиков. Один человек вместо целой
+                    за ведение проекта - не нужно нанимать никаких дополнительных подрядчиков. Один человек вместо целой
                     команды.</p>
+                <div class="about-namecard reveal reveal-delay-2">
+                    <div class="about-card-icon">✦</div>
+                    <div class="about-namecard-text">
+                        <div class="about-card-name">Артем Хомов</div>
+                        <div class="about-card-role">Эксперт по продающим сайтам</div>
+                    </div>
+                </div>
                 <div class="about-buttons reveal reveal-delay-3">
                     <a href="https://t.me/aashtore" target="_blank" rel="noopener" class="btn-outline">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -2162,7 +180,7 @@
         </div>
     </section>
 
-    <!-- Cases (новый стиль в духе belozerovweb) -->
+    <!-- Cases (3 кейса + кнопка на все проекты) -->
     <section class="section" id="cases">
         <div class="container">
             <div class="cases-header reveal">
@@ -2171,25 +189,24 @@
                             class="section-label-line"></span>КЕЙСЫ</div>
                     <h2 class="section-title" style="text-align:left">Избранные проекты</h2>
                     <p class="section-subtitle" style="margin-left:0;text-align:left">Реальные сайты в работе. Каждый
-                        проект — отдельная задача и измеримый результат.</p>
+                        проект - отдельная задача и измеримый результат.</p>
                 </div>
-                <a href="https://t.me/aashtore" target="_blank" rel="noopener" class="cases-link">Все проекты в Telegram
+                <a href="projects.html" class="cases-link">Все проекты
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
                     </svg></a>
             </div>
 
             <div class="projects-list">
                 <!-- 01 - lbsmile.ru -->
-                <a href="https://lbsmile.ru/" target="_blank" rel="noopener" class="project-card reveal">
+                <div class="project-card reveal">
                     <div class="project-inner">
                         <div class="project-image-wrap">
                             <span class="project-badge"><span class="project-badge-dot"></span>Стоматология</span>
                             <img class="project-image"
                                 src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Flbsmile.ru?w=1200&h=800"
-                                alt="LBSmile — клиника стоматологии" loading="lazy"
+                                alt="LBSmile - клиника стоматологии" loading="lazy"
                                 onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://lbsmile.ru';">
                             <div class="project-image-shade"></div>
                         </div>
@@ -2199,7 +216,7 @@
                                 <span class="project-meta-sep"></span>
                                 <span>Клиника / Услуги</span>
                             </div>
-                            <h3 class="project-title">LBSmile — клиника стоматологии</h3>
+                            <h3 class="project-title">LBSmile - клиника стоматологии</h3>
                             <p class="project-desc">Многостраничный сайт для семейной клиники: услуги, врачи, прайс
                                 и удобная онлайн-запись. Подключена аналитика и формы захвата лида с уведомлениями
                                 в Telegram.</p>
@@ -2208,7 +225,7 @@
                                 <span class="project-tag">Онлайн-запись</span>
                                 <span class="project-tag">SEO + Метрика</span>
                             </div>
-                            <span class="project-link">
+                            <a class="project-link" href="https://lbsmile.ru/" target="_blank" rel="noopener">
                                 Перейти на сайт
                                 <span class="project-link-icon">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2217,19 +234,19 @@
                                         <polyline points="7 7 17 7 17 17" />
                                     </svg>
                                 </span>
-                            </span>
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 02 - fonbureau.com -->
-                <a href="https://fonbureau.com/" target="_blank" rel="noopener" class="project-card reveal">
+                <div class="project-card reveal">
                     <div class="project-inner">
                         <div class="project-image-wrap">
                             <span class="project-badge"><span class="project-badge-dot"></span>Дизайн интерьеров</span>
                             <img class="project-image"
                                 src="https://i.imgur.com/D9SFcYH.jpg"
-                                alt="Fonbureau — студия дизайна интерьеров" loading="lazy">
+                                alt="Fonbureau - студия дизайна интерьеров" loading="lazy">
                             <div class="project-image-shade"></div>
                         </div>
                         <div class="project-content">
@@ -2238,7 +255,7 @@
                                 <span class="project-meta-sep"></span>
                                 <span>Студия / Портфолио</span>
                             </div>
-                            <h3 class="project-title">Fonbureau — студия дизайна интерьеров</h3>
+                            <h3 class="project-title">Fonbureau - студия дизайна интерьеров</h3>
                             <p class="project-desc">Премиальный многостраничный сайт с витриной проектов, разделом услуг
                                 и онлайн-калькулятором стоимости. Сайт принёс 70 000 ₽ в первый месяц после запуска.</p>
                             <div class="project-tags">
@@ -2246,7 +263,7 @@
                                 <span class="project-tag">Онлайн-калькулятор</span>
                                 <span class="project-tag">Адаптивный</span>
                             </div>
-                            <span class="project-link">
+                            <a class="project-link" href="https://fonbureau.com/" target="_blank" rel="noopener">
                                 Перейти на сайт
                                 <span class="project-link-icon">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2255,19 +272,19 @@
                                         <polyline points="7 7 17 7 17 17" />
                                     </svg>
                                 </span>
-                            </span>
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- 03 - i-ray.ru -->
-                <a href="https://i-ray.ru/" target="_blank" rel="noopener" class="project-card reveal">
+                <div class="project-card reveal">
                     <div class="project-inner">
                         <div class="project-image-wrap">
                             <span class="project-badge"><span class="project-badge-dot"></span>Интернет-магазин</span>
                             <img class="project-image"
                                 src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fi-ray.ru?w=1200&h=800"
-                                alt="i-Ray — магазин техники" loading="lazy"
+                                alt="i-Ray - магазин техники" loading="lazy"
                                 onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://i-ray.ru';">
                             <div class="project-image-shade"></div>
                         </div>
@@ -2277,16 +294,15 @@
                                 <span class="project-meta-sep"></span>
                                 <span>Магазин / E-commerce</span>
                             </div>
-                            <h3 class="project-title">i-Ray — магазин техники</h3>
+                            <h3 class="project-title">i-Ray - магазин техники</h3>
                             <p class="project-desc">Интернет-магазин с каталогом, фильтрами, карточками товаров
-                                и корзиной. Сайт спроектирован под трафик из контекста и работу с заявками через
-                                Telegram-бот.</p>
+                                и корзиной. Сайт спроектирован под трафик из контекста.</p>
                             <div class="project-tags">
                                 <span class="project-tag">Каталог + корзина</span>
                                 <span class="project-tag">Фильтры</span>
-                                <span class="project-tag">Telegram-бот</span>
+                                <span class="project-tag">Под трафик</span>
                             </div>
-                            <span class="project-link">
+                            <a class="project-link" href="https://i-ray.ru/" target="_blank" rel="noopener">
                                 Перейти на сайт
                                 <span class="project-link-icon">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2295,88 +311,19 @@
                                         <polyline points="7 7 17 7 17 17" />
                                     </svg>
                                 </span>
-                            </span>
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
+            </div>
 
-                <!-- 04 - maxmukhaev.com -->
-                <a href="https://maxmukhaev.com/" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-inner">
-                        <div class="project-image-wrap">
-                            <span class="project-badge"><span class="project-badge-dot"></span>Услуги скульптора</span>
-                            <img class="project-image"
-                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmaxmukhaev.com?w=1200&h=800"
-                                alt="Max Mukhaev — частный скульптор" loading="lazy"
-                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://maxmukhaev.com';">
-                            <div class="project-image-shade"></div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-meta-num">04</span>
-                                <span class="project-meta-sep"></span>
-                                <span>Авторский / Портфолио</span>
-                            </div>
-                            <h3 class="project-title">Max Mukhaev — частный скульптор</h3>
-                            <p class="project-desc">Премиальный авторский сайт с витриной скульптурных работ,
-                                биографией мастера и формой обратной связи. Лаконичный дизайн, акцент на художественную
-                                подачу.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Авторский дизайн</span>
-                                <span class="project-tag">Витрина работ</span>
-                                <span class="project-tag">Адаптивный</span>
-                            </div>
-                            <span class="project-link">
-                                Перейти на сайт
-                                <span class="project-link-icon">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2.2">
-                                        <line x1="7" y1="17" x2="17" y2="7" />
-                                        <polyline points="7 7 17 7 17 17" />
-                                    </svg>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 05 - eurofundament.ru -->
-                <a href="https://eurofundament.ru/" target="_blank" rel="noopener" class="project-card reveal">
-                    <div class="project-inner">
-                        <div class="project-image-wrap">
-                            <span class="project-badge"><span class="project-badge-dot"></span>Строительство</span>
-                            <img class="project-image"
-                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Feurofundament.ru?w=1200&h=800"
-                                alt="Eurofundament — строительство фундаментов" loading="lazy"
-                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://eurofundament.ru';">
-                            <div class="project-image-shade"></div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-meta-num">05</span>
-                                <span class="project-meta-sep"></span>
-                                <span>Строительство / Лидген</span>
-                            </div>
-                            <h3 class="project-title">Eurofundament — строительство фундаментов</h3>
-                            <p class="project-desc">Продающий многостраничный сайт с калькулятором стоимости фундамента,
-                                разделом услуг и формами заявки. Сайт сразу был готов к Яндекс.Директу.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Калькулятор</span>
-                                <span class="project-tag">Под Яндекс.Директ</span>
-                                <span class="project-tag">Лидген</span>
-                            </div>
-                            <span class="project-link">
-                                Перейти на сайт
-                                <span class="project-link-icon">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2.2">
-                                        <line x1="7" y1="17" x2="17" y2="7" />
-                                        <polyline points="7 7 17 7 17 17" />
-                                    </svg>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
+            <div class="cases-all-wrap reveal">
+                <a href="projects.html" class="cases-all-btn">
+                    Смотреть все проекты
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -2470,7 +417,7 @@
         </div>
     </section>
 
-    <!-- Approach (выровненная нумерация — все карточки одинаковые) -->
+    <!-- Approach -->
     <section class="section" id="approach">
         <div class="container">
             <div class="section-header reveal">
@@ -2496,7 +443,7 @@
                         <span class="approach-num">02</span>
                         <div class="approach-text">
                             <h3 class="approach-title">Сайт ведёт клиента к заявке</h3>
-                            <p class="approach-desc">Красиво — не значит продающе. Я проектирую структуру так, чтобы
+                            <p class="approach-desc">Красиво - не значит продающе. Я проектирую структуру так, чтобы
                                 посетитель дочитал до конца и нажал кнопку.</p>
                         </div>
                     </div>
@@ -2506,7 +453,7 @@
                         <span class="approach-num">03</span>
                         <div class="approach-text">
                             <h3 class="approach-title">Сразу готов к рекламе</h3>
-                            <p class="approach-desc">Не важно, откуда придёт трафик — Директ, Instagram или Telegram.
+                            <p class="approach-desc">Не важно, откуда придёт трафик - Директ, Instagram или Telegram.
                                 Сайт с первого дня готов принимать клиентов.</p>
                         </div>
                     </div>
@@ -2525,7 +472,7 @@
                     <div class="approach-inner">
                         <span class="approach-num">05</span>
                         <div class="approach-text">
-                            <h3 class="approach-title">Сначала показываю — потом оплата</h3>
+                            <h3 class="approach-title">Сначала показываю - потом оплата</h3>
                             <p class="approach-desc">Делаю прототип главного экрана бесплатно. Вы видите результат до
                                 оплаты. Никаких рисков.</p>
                         </div>
@@ -2602,7 +549,7 @@
         </div>
     </section>
 
-    <!-- FAQ (исправленное выравнивание) -->
+    <!-- FAQ -->
     <section class="section" id="faq">
         <div class="container">
             <div class="faq-container">
@@ -2622,8 +569,8 @@
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <div class="faq-answer-inner">Если контент (тексты, фото) готовы — лендинг запускаю за 2–4
-                                дня, многостраничный за 3–7 дней. Если материалов нет, помогу собрать, но это добавит
+                            <div class="faq-answer-inner">Если контент (тексты, фото) готовы - лендинг запускаю за 2-4
+                                дня, многостраничный за 3-7 дней. Если материалов нет, помогу собрать, но это добавит
                                 времени.</div>
                         </div>
                     </div>
@@ -2636,8 +583,8 @@
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <div class="faq-answer-inner">Нет, весь запуск сайта на мне. Если хостинга и домена нет —
-                                подскажу, где покупать. Если есть — подключу и настрою, SSL-сертификат делаю бесплатно.
+                            <div class="faq-answer-inner">Нет, весь запуск сайта на мне. Если хостинга и домена нет -
+                                подскажу, где покупать. Если есть - подключу и настрою, SSL-сертификат делаю бесплатно.
                             </div>
                         </div>
                     </div>
@@ -2714,312 +661,6 @@
         </div>
     </footer>
 
-    <script>
-        // ============ НОВАЯ 3D-ГРАФИКА (КАЧЕСТВЕННАЯ, ПЛАВНАЯ, БЕЗ ЛАГОВ) ============
-        (function() {
-            const container = document.getElementById('threejs-container');
-            if (!container || typeof THREE === 'undefined') return;
-
-            const isMobile = window.innerWidth < 768;
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(
-                45,
-                container.clientWidth / Math.max(container.clientHeight, 400),
-                0.1,
-                100
-            );
-            camera.position.z = 16;
-
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x000000, 0);
-            container.appendChild(renderer.domElement);
-
-            // ===== Главный объект: икосаэдр с плавной геометрией =====
-            const mainGroup = new THREE.Group();
-            scene.add(mainGroup);
-
-            const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
-            const icoWire = new THREE.LineSegments(
-                new THREE.WireframeGeometry(icoGeo),
-                new THREE.LineBasicMaterial({
-                    color: 0xffffff,
-                    transparent: true,
-                    opacity: 0.18
-                })
-            );
-            mainGroup.add(icoWire);
-
-            // Внутренний меньший икосаэдр
-            const icoInnerGeo = new THREE.IcosahedronGeometry(2.0, 0);
-            const icoInner = new THREE.LineSegments(
-                new THREE.WireframeGeometry(icoInnerGeo),
-                new THREE.LineBasicMaterial({
-                    color: 0xffffff,
-                    transparent: true,
-                    opacity: 0.10
-                })
-            );
-            mainGroup.add(icoInner);
-
-            // Внешний октаэдр
-            const octaGeo = new THREE.OctahedronGeometry(4.2, 0);
-            const octa = new THREE.LineSegments(
-                new THREE.WireframeGeometry(octaGeo),
-                new THREE.LineBasicMaterial({
-                    color: 0xffffff,
-                    transparent: true,
-                    opacity: 0.06
-                })
-            );
-            mainGroup.add(octa);
-
-            // ===== Орбитальное кольцо =====
-            const ringGeo = new THREE.TorusGeometry(5.2, 0.015, 12, 96);
-            const ring = new THREE.Mesh(
-                ringGeo,
-                new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.10 })
-            );
-            ring.rotation.x = Math.PI / 2.4;
-            scene.add(ring);
-
-            const ring2 = new THREE.Mesh(
-                new THREE.TorusGeometry(5.6, 0.01, 10, 80),
-                new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 })
-            );
-            ring2.rotation.x = Math.PI / 1.7;
-            ring2.rotation.z = Math.PI / 4;
-            scene.add(ring2);
-
-            // ===== Облако частиц =====
-            const particlesCount = isMobile ? 250 : 500;
-            const particlesGeo = new THREE.BufferGeometry();
-            const positions = new Float32Array(particlesCount * 3);
-            const velocities = [];
-            for (let i = 0; i < particlesCount; i++) {
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos((Math.random() * 2) - 1);
-                const r = 6 + Math.random() * 4;
-                positions[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
-                positions[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r;
-                positions[i * 3 + 2] = Math.cos(phi) * r;
-                velocities.push({
-                    x: (Math.random() - 0.5) * 0.002,
-                    y: (Math.random() - 0.5) * 0.002,
-                    z: (Math.random() - 0.5) * 0.002
-                });
-            }
-            particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-            // Кастомная маленькая точка через canvas
-            const dotCanvas = document.createElement('canvas');
-            dotCanvas.width = dotCanvas.height = 64;
-            const ctx = dotCanvas.getContext('2d');
-            const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-            grad.addColorStop(0, 'rgba(255,255,255,1)');
-            grad.addColorStop(0.4, 'rgba(255,255,255,0.6)');
-            grad.addColorStop(1, 'rgba(255,255,255,0)');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, 64, 64);
-            const dotTex = new THREE.CanvasTexture(dotCanvas);
-
-            const particlesMat = new THREE.PointsMaterial({
-                size: isMobile ? 0.08 : 0.12,
-                map: dotTex,
-                transparent: true,
-                opacity: 0.7,
-                blending: THREE.AdditiveBlending,
-                depthWrite: false,
-            });
-            const particles = new THREE.Points(particlesGeo, particlesMat);
-            scene.add(particles);
-
-            // Центральное «ядро» (точка-свет в центре)
-            const coreGeo = new THREE.SphereGeometry(0.15, 16, 16);
-            const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 });
-            const core = new THREE.Mesh(coreGeo, coreMat);
-            scene.add(core);
-
-            // ===== Мышь =====
-            let mouseX = 0, mouseY = 0;
-            let targetX = 0, targetY = 0;
-            window.addEventListener('mousemove', (e) => {
-                targetX = (e.clientX / window.innerWidth) * 2 - 1;
-                targetY = -(e.clientY / window.innerHeight) * 2 + 1;
-            });
-
-            // ===== Анимация =====
-            const clock = new THREE.Clock();
-            let frameId;
-
-            function animate() {
-                frameId = requestAnimationFrame(animate);
-                const t = clock.getElapsedTime();
-
-                mouseX += (targetX - mouseX) * 0.04;
-                mouseY += (targetY - mouseY) * 0.04;
-
-                // Плавное вращение главной группы
-                mainGroup.rotation.x = Math.sin(t * 0.15) * 0.15 + mouseY * 0.2;
-                mainGroup.rotation.y = t * 0.08 + mouseX * 0.3;
-
-                // Внутренние объекты крутятся отдельно
-                icoInner.rotation.x -= 0.002;
-                icoInner.rotation.y += 0.003;
-                octa.rotation.y -= 0.0015;
-                octa.rotation.z += 0.0008;
-
-                // Кольца
-                ring.rotation.z += 0.001;
-                ring.rotation.x = Math.PI / 2.4 + Math.sin(t * 0.2) * 0.05;
-                ring2.rotation.y += 0.0008;
-                ring2.rotation.z -= 0.0005;
-
-                // Частицы — лёгкий drift и общее вращение
-                const pos = particlesGeo.attributes.position.array;
-                for (let i = 0; i < particlesCount; i++) {
-                    pos[i * 3] += velocities[i].x;
-                    pos[i * 3 + 1] += velocities[i].y;
-                    pos[i * 3 + 2] += velocities[i].z;
-
-                    // Возвращение к началу если слишком далеко
-                    const dx = pos[i * 3], dy = pos[i * 3 + 1], dz = pos[i * 3 + 2];
-                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-                    if (dist > 11 || dist < 4) {
-                        velocities[i].x *= -1;
-                        velocities[i].y *= -1;
-                        velocities[i].z *= -1;
-                    }
-                }
-                particlesGeo.attributes.position.needsUpdate = true;
-                particles.rotation.y += 0.0006;
-
-                // Пульсация ядра
-                const pulse = 1 + Math.sin(t * 2) * 0.15;
-                core.scale.setScalar(pulse);
-
-                // Лёгкое движение камеры
-                camera.position.x += (mouseX * 0.8 - camera.position.x) * 0.03;
-                camera.position.y += (mouseY * 0.6 - camera.position.y) * 0.03;
-                camera.lookAt(0, 0, 0);
-
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            // Пауза при скрытии вкладки
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    cancelAnimationFrame(frameId);
-                } else {
-                    clock.start();
-                    animate();
-                }
-            });
-
-            window.addEventListener('resize', () => {
-                if (container.clientWidth > 0) {
-                    camera.aspect = container.clientWidth / Math.max(container.clientHeight, 400);
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
-                }
-            });
-        })();
-
-        // ============ MOUSE GLOW ============
-        (function() {
-            const glow = document.getElementById('mouseGlow');
-            if (!glow) return;
-            document.addEventListener('mousemove', (e) => {
-                glow.style.left = e.clientX + 'px';
-                glow.style.top = e.clientY + 'px';
-                glow.style.opacity = '1';
-            });
-            document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-        })();
-
-        // ============ HEADER SCROLL ============
-        (function() {
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 30) header.classList.add('scrolled');
-                else header.classList.remove('scrolled');
-            }, { passive: true });
-        })();
-
-        // ============ MOBILE MENU ============
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open');
-            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-        }
-
-        // ============ SCROLL TO SECTION ============
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // ============ FAQ ============
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            const answer = item.querySelector('.faq-answer');
-            const isOpen = item.classList.contains('open');
-
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) {
-                    openItem.classList.remove('open');
-                    openItem.querySelector('.faq-answer').style.maxHeight = '0px';
-                }
-            });
-
-            if (isOpen) {
-                item.classList.remove('open');
-                answer.style.maxHeight = '0px';
-            } else {
-                item.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        }
-
-        // ============ SCROLL REVEAL ============
-        (function() {
-            const revealEls = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            revealEls.forEach((el) => observer.observe(el));
-        })();
-
-        // ============ PARALLAX & FLOATING ============
-        (function() {
-            const heroGrid = document.querySelector('.hero-grid-bg');
-            const floatingDecors = document.querySelectorAll('.floating-decor');
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const scrolled = window.scrollY;
-                        if (heroGrid) heroGrid.style.transform = `translateY(${scrolled * 0.08}px)`;
-                        floatingDecors.forEach((el, i) => {
-                            el.style.transform = `translateY(${scrolled * (0.04 + i * 0.03)}px)`;
-                        });
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
-        })();
-
-        console.log('%c HDigital %c Обновлённая версия — кейсы, 3D, выравнивание ',
-            'background:#fff;color:#000;padding:6px 14px;border-radius:999px;font-weight:700;font-size:14px;',
-            'color:#888;font-size:12px;');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Мои проекты - HDigital | Артем Хомов</title>
+    <meta name="description"
+        content="Портфолио HDigital: реализованные сайты и интернет-магазины под рекламу и трафик. Стоматология, дизайн интерьеров, магазин техники, услуги и строительство.">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/ctTN3R5.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mouse glow -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="header-inner">
+            <img src="https://i.imgur.com/ctTN3R5.jpg" alt="HDigital" class="logo-img" onclick="window.location.href='index.html'"
+                loading="eager">
+            <nav class="nav">
+                <a class="nav-link" href="index.html#hero">Главная</a>
+                <a class="nav-link" href="index.html#about">Знакомство</a>
+                <a class="nav-link" href="projects.html">Кейсы</a>
+                <a class="nav-link" href="index.html#process">Процесс</a>
+                <a class="nav-link" href="index.html#approach">Подход</a>
+                <a class="nav-link" href="index.html#services">Услуги</a>
+                <a class="nav-link" href="index.html#faq">Вопросы</a>
+                <a class="nav-link" href="index.html#contact">Контакты</a>
+            </nav>
+            <a href="https://t.me/aashtore" target="_blank" rel="noopener" class="header-tg">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.938z" />
+                </svg>
+                Telegram
+            </a>
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Меню">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Боковая шторка-меню -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMenu()"></div>
+    <aside class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-head">
+            <span class="mobile-menu-logo">HDigital</span>
+            <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a class="mobile-nav-link" href="index.html#hero">Главная</a>
+            <a class="mobile-nav-link" href="index.html#about">Знакомство</a>
+            <a class="mobile-nav-link" href="projects.html">Кейсы</a>
+            <a class="mobile-nav-link" href="index.html#process">Процесс</a>
+            <a class="mobile-nav-link" href="index.html#approach">Подход</a>
+            <a class="mobile-nav-link" href="index.html#services">Услуги</a>
+            <a class="mobile-nav-link" href="index.html#faq">Вопросы</a>
+            <a class="mobile-nav-link" href="index.html#contact">Контакты</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <div class="mobile-menu-socials">
+                <a href="https://t.me/aashtore" target="_blank" rel="noopener" class="mobile-menu-social-link" aria-label="Telegram-блог">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.938z" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com/hdigital_ru" target="_blank" rel="noopener" class="mobile-menu-social-link" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+                <a href="https://t.me/Skiwh" target="_blank" rel="noopener" class="mobile-menu-social-link" aria-label="Связаться">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                </a>
+            </div>
+            <a href="mailto:info@hdigital.ru" class="mobile-menu-email">info@hdigital.ru</a>
+        </div>
+    </aside>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+        <div class="container">
+            <a href="index.html" class="page-back">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                На главную
+            </a>
+            <div class="section-label" style="justify-content:center"><span class="section-label-line"></span>ПОРТФОЛИО<span class="section-label-line"></span></div>
+            <h1 class="page-hero-title">Мои проекты</h1>
+            <p class="page-hero-sub">Подборка реализованных сайтов и интернет-магазинов под разные ниши. Каждый проект -
+                отдельная задача: от структуры и дизайна до запуска под рекламу и трафик.</p>
+        </div>
+    </section>
+
+    <!-- Все проекты -->
+    <section class="projects-page-section">
+        <div class="container">
+            <div class="projects-list">
+                <!-- 01 - lbsmile.ru -->
+                <div class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-image-wrap">
+                            <span class="project-badge"><span class="project-badge-dot"></span>Стоматология</span>
+                            <img class="project-image"
+                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Flbsmile.ru?w=1200&h=800"
+                                alt="LBSmile - клиника стоматологии" loading="lazy"
+                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://lbsmile.ru';">
+                            <div class="project-image-shade"></div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-meta-num">01</span>
+                                <span class="project-meta-sep"></span>
+                                <span>Клиника / Услуги</span>
+                            </div>
+                            <h3 class="project-title">LBSmile - клиника стоматологии</h3>
+                            <p class="project-desc">Многостраничный сайт для семейной клиники: услуги, врачи, прайс
+                                и удобная онлайн-запись. Подключена аналитика и формы захвата лида с уведомлениями
+                                в Telegram.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Многостраничный</span>
+                                <span class="project-tag">Онлайн-запись</span>
+                                <span class="project-tag">SEO + Метрика</span>
+                            </div>
+                            <a class="project-link" href="https://lbsmile.ru/" target="_blank" rel="noopener">
+                                Перейти на сайт
+                                <span class="project-link-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 - fonbureau.com -->
+                <div class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-image-wrap">
+                            <span class="project-badge"><span class="project-badge-dot"></span>Дизайн интерьеров</span>
+                            <img class="project-image"
+                                src="https://i.imgur.com/D9SFcYH.jpg"
+                                alt="Fonbureau - студия дизайна интерьеров" loading="lazy">
+                            <div class="project-image-shade"></div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-meta-num">02</span>
+                                <span class="project-meta-sep"></span>
+                                <span>Студия / Портфолио</span>
+                            </div>
+                            <h3 class="project-title">Fonbureau - студия дизайна интерьеров</h3>
+                            <p class="project-desc">Премиальный многостраничный сайт с витриной проектов, разделом услуг
+                                и онлайн-калькулятором стоимости. Сайт принёс 70 000 ₽ в первый месяц после запуска.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Портфолио</span>
+                                <span class="project-tag">Онлайн-калькулятор</span>
+                                <span class="project-tag">Адаптивный</span>
+                            </div>
+                            <a class="project-link" href="https://fonbureau.com/" target="_blank" rel="noopener">
+                                Перейти на сайт
+                                <span class="project-link-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 - i-ray.ru -->
+                <div class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-image-wrap">
+                            <span class="project-badge"><span class="project-badge-dot"></span>Интернет-магазин</span>
+                            <img class="project-image"
+                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fi-ray.ru?w=1200&h=800"
+                                alt="i-Ray - магазин техники" loading="lazy"
+                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://i-ray.ru';">
+                            <div class="project-image-shade"></div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-meta-num">03</span>
+                                <span class="project-meta-sep"></span>
+                                <span>Магазин / E-commerce</span>
+                            </div>
+                            <h3 class="project-title">i-Ray - магазин техники</h3>
+                            <p class="project-desc">Интернет-магазин с каталогом, фильтрами, карточками товаров
+                                и корзиной. Сайт спроектирован под трафик из контекста.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Каталог + корзина</span>
+                                <span class="project-tag">Фильтры</span>
+                                <span class="project-tag">Под трафик</span>
+                            </div>
+                            <a class="project-link" href="https://i-ray.ru/" target="_blank" rel="noopener">
+                                Перейти на сайт
+                                <span class="project-link-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 - maxmukhaev.com -->
+                <div class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-image-wrap">
+                            <span class="project-badge"><span class="project-badge-dot"></span>Услуги скульптора</span>
+                            <img class="project-image"
+                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmaxmukhaev.com?w=1200&h=800"
+                                alt="Max Mukhaev - частный скульптор" loading="lazy"
+                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://maxmukhaev.com';">
+                            <div class="project-image-shade"></div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-meta-num">04</span>
+                                <span class="project-meta-sep"></span>
+                                <span>Авторский / Портфолио</span>
+                            </div>
+                            <h3 class="project-title">Max Mukhaev - частный скульптор</h3>
+                            <p class="project-desc">Премиальный авторский сайт с витриной скульптурных работ,
+                                биографией мастера и формой обратной связи. Лаконичный дизайн, акцент на художественную
+                                подачу.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Авторский дизайн</span>
+                                <span class="project-tag">Витрина работ</span>
+                                <span class="project-tag">Адаптивный</span>
+                            </div>
+                            <a class="project-link" href="https://maxmukhaev.com/" target="_blank" rel="noopener">
+                                Перейти на сайт
+                                <span class="project-link-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 - eurofundament.ru -->
+                <div class="project-card reveal">
+                    <div class="project-inner">
+                        <div class="project-image-wrap">
+                            <span class="project-badge"><span class="project-badge-dot"></span>Строительство</span>
+                            <img class="project-image"
+                                src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Feurofundament.ru?w=1200&h=800"
+                                alt="Eurofundament - строительство фундаментов" loading="lazy"
+                                onerror="this.onerror=null;this.src='https://image.thum.io/get/width/1200/crop/800/https://eurofundament.ru';">
+                            <div class="project-image-shade"></div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-meta-num">05</span>
+                                <span class="project-meta-sep"></span>
+                                <span>Строительство / Лидген</span>
+                            </div>
+                            <h3 class="project-title">Eurofundament - строительство фундаментов</h3>
+                            <p class="project-desc">Продающий многостраничный сайт с калькулятором стоимости фундамента,
+                                разделом услуг и формами заявки. Сайт сразу был готов к Яндекс.Директу.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Калькулятор</span>
+                                <span class="project-tag">Под Яндекс.Директ</span>
+                                <span class="project-tag">Лидген</span>
+                            </div>
+                            <a class="project-link" href="https://eurofundament.ru/" target="_blank" rel="noopener">
+                                Перейти на сайт
+                                <span class="project-link-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cases-all-wrap reveal">
+                <a href="https://t.me/Skiwh" target="_blank" rel="noopener" class="cases-all-btn">
+                    Обсудить свой проект
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-copy">© HDigital • Артем Хомов 2026</div>
+            <div class="footer-links">
+                <a href="https://instagram.com/hdigital_ru" target="_blank" rel="noopener" class="footer-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    Instagram
+                </a>
+                <a href="https://t.me/aashtore" target="_blank" rel="noopener" class="footer-link">Telegram-блог</a>
+                <a href="https://t.me/Skiwh" target="_blank" rel="noopener" class="footer-link">Связаться</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
