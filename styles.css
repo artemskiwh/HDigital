@@ -965,10 +965,9 @@ img {
     align-items: stretch;
 }
 @media (min-width: 900px) {
-    .project-inner { grid-template-columns: 1.15fr 1fr; }
-    .project-card:nth-child(even) .project-inner { grid-template-columns: 1fr 1.15fr; }
-    .project-card:nth-child(even) .project-image-wrap { order: 2; }
-    .project-card:nth-child(even) .project-content { order: 1; }
+    .project-inner { grid-template-columns: 1fr 1.1fr; }
+    .project-content { order: 1; }
+    .project-image-wrap { order: 2; }
 }
 .project-image-wrap {
     position: relative;
