@@ -1,206 +1,127 @@
-// ============ 3D-ГРАФИКА (ИКОСАЭДРЫ + КОЛЬЦА + ЧАСТИЦЫ) ============
+// ============ 3D-ГРАФИКА (ЦИФРОВАЯ ПАУТИНА + ЧАСТИЦЫ) ============
 (function() {
     const container = document.getElementById('threejs-container');
     if (!container || typeof THREE === 'undefined') return;
 
-    const isMobile = window.innerWidth < 768;
-
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-        45,
-        container.clientWidth / Math.max(container.clientHeight, 400),
-        0.1,
-        100
-    );
-    camera.position.z = 16;
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / Math.max(container.clientHeight, 400), 0.1, 100);
+    camera.position.z = 14;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // ===== Главный объект: икосаэдр с плавной геометрией =====
-    const mainGroup = new THREE.Group();
-    scene.add(mainGroup);
-
-    const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
-    const icoWire = new THREE.LineSegments(
-        new THREE.WireframeGeometry(icoGeo),
-        new THREE.LineBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.18
-        })
+    // Освещение не нужно, только линии и точки
+    // Сетчатая сфера (паутина)
+    const sphereGeo = new THREE.SphereGeometry(2.8, 32, 32);
+    const wireframe = new THREE.LineSegments(
+        new THREE.EdgesGeometry(sphereGeo),
+        new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.07 })
     );
-    mainGroup.add(icoWire);
+    scene.add(wireframe);
 
-    // Внутренний меньший икосаэдр
-    const icoInnerGeo = new THREE.IcosahedronGeometry(2.0, 0);
-    const icoInner = new THREE.LineSegments(
-        new THREE.WireframeGeometry(icoInnerGeo),
-        new THREE.LineBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.10
-        })
+    // Вторая, более крупная и прозрачная сфера
+    const sphereGeo2 = new THREE.SphereGeometry(4.2, 24, 18);
+    const wireframe2 = new THREE.LineSegments(
+        new THREE.EdgesGeometry(sphereGeo2),
+        new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.04 })
     );
-    mainGroup.add(icoInner);
+    scene.add(wireframe2);
 
-    // Внешний октаэдр
-    const octaGeo = new THREE.OctahedronGeometry(4.2, 0);
-    const octa = new THREE.LineSegments(
-        new THREE.WireframeGeometry(octaGeo),
-        new THREE.LineBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.06
-        })
-    );
-    mainGroup.add(octa);
-
-    // ===== Орбитальное кольцо =====
-    const ringGeo = new THREE.TorusGeometry(5.2, 0.015, 12, 96);
-    const ring = new THREE.Mesh(
-        ringGeo,
-        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.10 })
-    );
-    ring.rotation.x = Math.PI / 2.4;
+    // Орбитальные кольца
+    const ringGeo = new THREE.TorusGeometry(3.5, 0.03, 16, 100);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08 });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 3;
     scene.add(ring);
 
     const ring2 = new THREE.Mesh(
-        new THREE.TorusGeometry(5.6, 0.01, 10, 80),
-        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 })
+        new THREE.TorusGeometry(3.8, 0.02, 16, 80),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 })
     );
-    ring2.rotation.x = Math.PI / 1.7;
     ring2.rotation.z = Math.PI / 4;
+    ring2.rotation.x = Math.PI / 2.5;
     scene.add(ring2);
 
-    // ===== Облако частиц =====
-    const particlesCount = isMobile ? 250 : 500;
+    // Летающие частицы (сотни точек)
     const particlesGeo = new THREE.BufferGeometry();
+    const particlesCount = 600;
     const positions = new Float32Array(particlesCount * 3);
-    const velocities = [];
+    const colors = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {
+        // Расположение в пределах сферы радиусом 5
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos((Math.random() * 2) - 1);
-        const r = 6 + Math.random() * 4;
+        const r = 4 + Math.random() * 3;
         positions[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
         positions[i * 3 + 1] = Math.sin(phi) * Math.sin(theta) * r;
         positions[i * 3 + 2] = Math.cos(phi) * r;
-        velocities.push({
-            x: (Math.random() - 0.5) * 0.002,
-            y: (Math.random() - 0.5) * 0.002,
-            z: (Math.random() - 0.5) * 0.002
-        });
+        colors[i * 3] = 1; colors[i * 3 + 1] = 1; colors[i * 3 + 2] = 1;
     }
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    // Кастомная маленькая точка через canvas
-    const dotCanvas = document.createElement('canvas');
-    dotCanvas.width = dotCanvas.height = 64;
-    const ctx = dotCanvas.getContext('2d');
-    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grad.addColorStop(0, 'rgba(255,255,255,1)');
-    grad.addColorStop(0.4, 'rgba(255,255,255,0.6)');
-    grad.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 64, 64);
-    const dotTex = new THREE.CanvasTexture(dotCanvas);
-
+    particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     const particlesMat = new THREE.PointsMaterial({
-        size: isMobile ? 0.08 : 0.12,
-        map: dotTex,
-        transparent: true,
-        opacity: 0.7,
+        size: 0.04,
+        vertexColors: true,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
+        transparent: true,
+        opacity: 0.5,
     });
     const particles = new THREE.Points(particlesGeo, particlesMat);
     scene.add(particles);
 
-    // Центральное «ядро» (точка-свет в центре)
-    const coreGeo = new THREE.SphereGeometry(0.15, 16, 16);
-    const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 });
-    const core = new THREE.Mesh(coreGeo, coreMat);
-    scene.add(core);
+    // Линии соединений между ближайшими частицами (создадим несколько случайных)
+    const linesMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.04 });
+    const linesGroup = new THREE.Group();
+    for (let i = 0; i < 200; i++) {
+        const idx1 = Math.floor(Math.random() * particlesCount);
+        const idx2 = Math.floor(Math.random() * particlesCount);
+        if (idx1 === idx2) continue;
+        const p1 = new THREE.Vector3(positions[idx1*3], positions[idx1*3+1], positions[idx1*3+2]);
+        const p2 = new THREE.Vector3(positions[idx2*3], positions[idx2*3+1], positions[idx2*3+2]);
+        const dist = p1.distanceTo(p2);
+        if (dist < 2.8) {
+            const lineGeo = new THREE.BufferGeometry().setFromPoints([p1, p2]);
+            const line = new THREE.Line(lineGeo, linesMaterial);
+            linesGroup.add(line);
+        }
+    }
+    scene.add(linesGroup);
 
-    // ===== Мышь =====
     let mouseX = 0, mouseY = 0;
-    let targetX = 0, targetY = 0;
     window.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX / window.innerWidth) * 2 - 1;
-        targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
     });
 
-    // ===== Анимация =====
     const clock = new THREE.Clock();
-    let frameId;
-
     function animate() {
-        frameId = requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
         const t = clock.getElapsedTime();
 
-        mouseX += (targetX - mouseX) * 0.04;
-        mouseY += (targetY - mouseY) * 0.04;
+        wireframe.rotation.y += 0.001;
+        wireframe.rotation.x = Math.sin(t * 0.2) * 0.05;
+        wireframe2.rotation.y -= 0.0006;
+        wireframe2.rotation.z += 0.0003;
+        ring.rotation.z += 0.0005;
+        ring.rotation.y += 0.0004;
+        ring2.rotation.x += 0.0007;
+        ring2.rotation.y -= 0.0003;
+        particles.rotation.y += 0.0002;
+        particles.rotation.x = Math.sin(t * 0.15) * 0.03;
+        linesGroup.rotation.y += 0.00015;
+        linesGroup.rotation.x += 0.0001;
 
-        // Плавное вращение главной группы
-        mainGroup.rotation.x = Math.sin(t * 0.15) * 0.15 + mouseY * 0.2;
-        mainGroup.rotation.y = t * 0.08 + mouseX * 0.3;
-
-        // Внутренние объекты крутятся отдельно
-        icoInner.rotation.x -= 0.002;
-        icoInner.rotation.y += 0.003;
-        octa.rotation.y -= 0.0015;
-        octa.rotation.z += 0.0008;
-
-        // Кольца
-        ring.rotation.z += 0.001;
-        ring.rotation.x = Math.PI / 2.4 + Math.sin(t * 0.2) * 0.05;
-        ring2.rotation.y += 0.0008;
-        ring2.rotation.z -= 0.0005;
-
-        // Частицы — лёгкий drift и общее вращение
-        const pos = particlesGeo.attributes.position.array;
-        for (let i = 0; i < particlesCount; i++) {
-            pos[i * 3] += velocities[i].x;
-            pos[i * 3 + 1] += velocities[i].y;
-            pos[i * 3 + 2] += velocities[i].z;
-
-            // Возвращение к началу если слишком далеко
-            const dx = pos[i * 3], dy = pos[i * 3 + 1], dz = pos[i * 3 + 2];
-            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-            if (dist > 11 || dist < 4) {
-                velocities[i].x *= -1;
-                velocities[i].y *= -1;
-                velocities[i].z *= -1;
-            }
-        }
-        particlesGeo.attributes.position.needsUpdate = true;
-        particles.rotation.y += 0.0006;
-
-        // Пульсация ядра
-        const pulse = 1 + Math.sin(t * 2) * 0.15;
-        core.scale.setScalar(pulse);
-
-        // Лёгкое движение камеры
-        camera.position.x += (mouseX * 0.8 - camera.position.x) * 0.03;
-        camera.position.y += (mouseY * 0.6 - camera.position.y) * 0.03;
+        camera.position.x += (mouseX * 1.2 - camera.position.x) * 0.02;
+        camera.position.y += (mouseY * 0.8 - camera.position.y) * 0.02;
         camera.lookAt(0, 0, 0);
 
         renderer.render(scene, camera);
     }
     animate();
-
-    // Пауза при скрытии вкладки
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(frameId);
-        } else {
-            clock.start();
-            animate();
-        }
-    });
 
     window.addEventListener('resize', () => {
         if (container.clientWidth > 0) {
